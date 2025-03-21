@@ -1,5 +1,5 @@
 import React from 'react';
-import CallsTablePage from '../pages/CallsList/CallsTablePage';
+import CallsTablePage from '../pages/CallsTablePage';
 import { Provider } from 'react-redux';
 import store from './providers/store';
 

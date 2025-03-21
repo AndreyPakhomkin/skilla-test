@@ -4,7 +4,7 @@ interface ErrorItemProps {
     errorMessage: string | null
 }
 
-export const ErrorItem: React.FC<ErrorItemProps> = ({ errorMessage }) => {
+const ErrorItem: React.FC<ErrorItemProps> = ({ errorMessage }) => {
     return (
         <>
             <h4>Error</h4>
@@ -12,3 +12,5 @@ export const ErrorItem: React.FC<ErrorItemProps> = ({ errorMessage }) => {
         </>
     )
 }
+
+export default ErrorItem
