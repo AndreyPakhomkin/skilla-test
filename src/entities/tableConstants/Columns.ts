@@ -1,5 +1,5 @@
 import { createColumnHelper } from "@tanstack/react-table";
-import { IFormattedCall } from "../../widgets/tableTypes";
+import { ICall } from "../calls/types";
 
 export const COLUMNS = [
     {
@@ -32,27 +32,38 @@ export const COLUMNS = [
     },
 ];
 
-const columnHelper = createColumnHelper<IFormattedCall>()
+const columnHelper = createColumnHelper<ICall>()
+
 export const helpedColumns = [
-    columnHelper.accessor('Тип', {
+    columnHelper.accessor('type', {
+        header: 'Тип',
         cell: info => info.getValue(),
     }),
-    columnHelper.accessor('Время', {
+    columnHelper.accessor('date', {
+        header: 'Время',
+        cell: info => {
+            const timeNodate = info.getValue().slice(-8).slice(0, 5)
+            return timeNodate
+        },
+    }),
+    columnHelper.accessor('person_avatar', {
+        header: 'Сотрудник',
+        cell: () => 'user',
+    }),
+    columnHelper.accessor('to_number', {
+        header: 'Звонок',
         cell: info => info.getValue(),
     }),
-    columnHelper.accessor('Сотрудник', {
+    columnHelper.accessor('source', {
+        header: 'Источник',
         cell: info => info.getValue(),
     }),
-    columnHelper.accessor('Звонок', {
+    columnHelper.accessor('rating', {
+        header: 'Оценка',
         cell: info => info.getValue(),
     }),
-    columnHelper.accessor('Источник', {
-        cell: info => info.getValue(),
-    }),
-    columnHelper.accessor('Оценка', {
-        cell: info => info.getValue(),
-    }),
-    columnHelper.accessor('Длительность', {
+    columnHelper.accessor('time', {
+        header: 'Длительность',
         cell: info => info.getValue(),
     }),
 ]

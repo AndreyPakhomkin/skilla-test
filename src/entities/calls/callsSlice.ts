@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { CallsState, ICall } from "./types";
+import { CallsState, TransformedCallsResponse, ICall } from "./types";
 import { callsApi } from "./callsApi";
+import { getCallType } from "../../shared/utils/getTypeCall";
 
 const initialState: CallsState = {
     calls: [],
@@ -9,6 +10,7 @@ const initialState: CallsState = {
         errorMessage: null,
         errorStatus: false
     },
+    totalRows: 0
 }
 
 const callsSlice = createSlice({
@@ -22,9 +24,16 @@ const callsSlice = createSlice({
                 state.callsError.errorStatus = false;
                 state.callsError.errorMessage = null;
             })
-            .addMatcher(callsApi.endpoints.getCalls.matchFulfilled, (state, action: PayloadAction<ICall[]>) => {
+            .addMatcher(callsApi.endpoints.getCalls.matchFulfilled, (state, action: PayloadAction<TransformedCallsResponse>) => {
                 state.callsLoading = false;
-                state.calls = action.payload;
+                const callsWithType = action.payload.calls.map((call: ICall) => ({
+                    ...call,
+                    type: getCallType(call),
+                }));
+                state.calls = callsWithType;
+                if (state.totalRows === 0) {
+                    state.totalRows = action.payload.totalRows;
+                }
             })
             .addMatcher(callsApi.endpoints.getCalls.matchRejected, (state, action) => {
                 state.callsLoading = false;

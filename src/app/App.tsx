@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { StrictMode } from 'react';
 import CallsTablePage from '../pages/CallsTablePage';
 import { Provider } from 'react-redux';
 import store from './providers/store';

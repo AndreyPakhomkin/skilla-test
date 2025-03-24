@@ -1,0 +1,24 @@
+#rate {
+    font-size: 14px;
+    border-radius: 4px;
+
+    .rate-not_used {
+        color: #EA1A4F;
+    }
+
+    .rate-bad {
+        color: #EA1A4F;
+        border: 1px solid #EA1A4F;
+        background-color: #FEE9EF;
+    }
+
+    .rate-ok {
+        border: 1px solid #ADBFDF;
+        background-color: #D8E4FB;
+    }
+
+    .rate-perfect {
+        border: 1px solid #28A879;
+        background-color: #DBF8EF;
+    }
+}
