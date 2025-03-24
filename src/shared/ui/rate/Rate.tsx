@@ -3,7 +3,7 @@ import './Rate.scss'
 
 
 enum rates {
-    not_used = 'Скрипт не использовался',
+    not_used = 'Скрипт не использован',
     bad = 'Плохо',
     ok = 'Хорошо',
     perfect = 'Отлично'
@@ -15,7 +15,7 @@ interface RateProps {
 
 const Rate: React.FC<RateProps> = ({ rate }) => {
     return (
-        <div id="rate" className={`rate=${rate}`}>{rates[rate]}</div>
+        <div id="rate" className={`rate-${rate}`}>{rates[rate]}</div>
     )
 }
 

@@ -2,6 +2,9 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { CallsState, TransformedCallsResponse, ICall } from "./types";
 import { callsApi } from "./callsApi";
 import { getCallType } from "../../shared/utils/getTypeCall";
+import { getRandomCallRate } from "../../shared/utils/getRandomCallRate";
+import { getPhoneNumber } from "../../shared/utils/getPhoneNumber";
+import { secondsToTime } from "../../shared/utils/secondsToTime";
 
 const initialState: CallsState = {
     calls: [],
@@ -26,11 +29,14 @@ const callsSlice = createSlice({
             })
             .addMatcher(callsApi.endpoints.getCalls.matchFulfilled, (state, action: PayloadAction<TransformedCallsResponse>) => {
                 state.callsLoading = false;
-                const callsWithType = action.payload.calls.map((call: ICall) => ({
+                const extendedCalls = action.payload.calls.map((call: ICall) => ({
                     ...call,
                     type: getCallType(call),
+                    rate: getRandomCallRate(),
+                    phoneNumber: getPhoneNumber({ in_out: call.in_out, to_number: call.to_number, from_number: call.from_number }),
+                    duration: secondsToTime(call.time)
                 }));
-                state.calls = callsWithType;
+                state.calls = extendedCalls;
                 if (state.totalRows === 0) {
                     state.totalRows = action.payload.totalRows;
                 }

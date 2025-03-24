@@ -45,7 +45,9 @@ export interface ICall {
     person_surname: string;
     person_avatar: string;
     type: 'Incoming' | 'Outgoing' | 'Missed' | 'NoAnswer';
-    rating: number;
+    rate: string;
+    phoneNumber: string,
+    duration: string
 }
 
 export enum CallType {
@@ -79,8 +81,4 @@ export interface ICallsResponse {
 export interface TransformedCallsResponse {
     calls: ICall[];
     totalRows: number;
-}
-
-export interface CallRate {
-    rate: 'rating not used' | 'bad' | 'ok' | 'perfect'
 }

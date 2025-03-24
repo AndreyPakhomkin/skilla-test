@@ -2,6 +2,7 @@ import React from "react";
 import Icon from "../shared/ui/Icon";
 import { flexRender } from "@tanstack/react-table";
 import Rate from "../shared/ui/rate/Rate";
+import './CallTableCell.scss'
 
 interface CallTableCellProps {
     columnId: string,

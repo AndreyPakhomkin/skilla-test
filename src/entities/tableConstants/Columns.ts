@@ -50,19 +50,19 @@ export const helpedColumns = [
         header: 'Сотрудник',
         cell: () => 'user',
     }),
-    columnHelper.accessor('to_number', {
+    columnHelper.accessor('phoneNumber', {
         header: 'Звонок',
-        cell: info => info.getValue(),
+        cell: (info) => info.getValue(),
     }),
     columnHelper.accessor('source', {
         header: 'Источник',
         cell: info => info.getValue(),
     }),
-    columnHelper.accessor('rating', {
+    columnHelper.accessor('rate', {
         header: 'Оценка',
         cell: info => info.getValue(),
     }),
-    columnHelper.accessor('time', {
+    columnHelper.accessor('duration', {
         header: 'Длительность',
         cell: info => info.getValue(),
     }),
