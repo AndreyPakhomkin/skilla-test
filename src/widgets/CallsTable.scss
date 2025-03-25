@@ -9,14 +9,10 @@
         background-color: white;
         padding-left: 35px;
         font-weight: 400;
+        border-collapse: collapse;
 
         .head-tableRow {
             border-bottom: 1px solid #F1F4F9;
-        }
-
-        .icon {
-            height: 13px;
-            width: 13px;
         }
 
         thead {
@@ -24,50 +20,68 @@
             color: #5E7793;
             height: 65px;
 
-            .header-type {
+            .header {
+                cursor: pointer;
+            }
+
+            .type {
                 width: 4%;
                 text-align: center;
             }
 
-            .header-date {
+            .date {
                 width: 6%;
                 text-align: center;
             }
 
-            .header-person_avatar {
+            .person_avatar {
                 width: 9%;
                 text-align: left;
                 padding-left: 15px;
             }
 
-            .header-phoneNumber {
+            .phoneNumber {
                 width: 22%;
                 text-align: left;
                 padding-left: 15px;
             }
 
-            .header-source {
+            .source {
                 width: 15%;
                 color: #5E7793;
                 text-align: left;
                 padding-left: 15px;
             }
 
-            .header-rate {
+            .rate {
                 width: 32%;
                 text-align: left;
                 padding-left: 15px;
             }
 
-            .header-time {
+            .time {
                 text-align: end;
                 padding-right: 40px;
+            }
+
+            .arrow {
+                width: 1rem;
+                position: absolute;
             }
         }
 
         tbody {
             height: fit-content;
             font-size: 15px;
+        }
+
+        tr {
+            display: table-row;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        tr:hover {
+            background-color: #f9fafe;
         }
 
         td {

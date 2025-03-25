@@ -1,25 +1,39 @@
-import React, { useEffect, useMemo } from "react";
-import { getCoreRowModel, useReactTable, flexRender } from "@tanstack/react-table";
+import React, { useEffect, useMemo, useState } from "react";
+import {
+    getCoreRowModel,
+    useReactTable,
+    flexRender,
+    getSortedRowModel,
+    SortingState,
+    ColumnFiltersState
+} from "@tanstack/react-table";
 import { helpedColumns } from "../entities/tableConstants/Columns";
 import './CallsTable.scss'
 import { useAppSelector } from "../shared/hooks/storeHooks";
-import CallIcon from "../shared/ui/Icon";
 import CallTableCell from "../features/CallTableCell";
+import Icon from "../shared/ui/Icon";
 
 
 const CallsTable: React.FC = () => {
-    // убрать useMemo, когда calls будут лежать в store
-    const data = useAppSelector((state) => state.storedCalls.calls)
-    const columns = useMemo(() => helpedColumns, [])
+    const data = useAppSelector((state) => state.storedCalls.calls);
+    const columns = useMemo(() => helpedColumns, []);
+    const [sorting, setSorting] = useState<SortingState>([]);
+    const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
     const table = useReactTable({
         columns,
         data,
-        getCoreRowModel: getCoreRowModel()
-    })
+        getCoreRowModel: getCoreRowModel(),
+        getSortedRowModel: getSortedRowModel(),
+        state: {
+            sorting,
+            columnFilters
+        },
+        onSortingChange: setSorting,
+        onColumnFiltersChange: setColumnFilters,
+    });
 
     useEffect(() => console.log('CallsTable render'))
     useEffect(() => console.log('Calls', data), [data])
-
 
     return (
         <div className="table-container">
@@ -28,13 +42,14 @@ const CallsTable: React.FC = () => {
                     {table.getHeaderGroups().map(headerGroup => (
                         <tr key={headerGroup.id} className="head-tableRow">
                             {headerGroup.headers.map(header => (
-                                <th key={header.id} className={`header-${header.id}`}>
+                                <th key={header.id} className={`header ${header.id}`} onClick={header.column.getToggleSortingHandler()}>
                                     {header.isPlaceholder
                                         ? null
                                         : flexRender(
                                             header.column.columnDef.header,
                                             header.getContext()
                                         )}
+                                    {header.column.getIsSorted() === "asc" ? <Icon iconType="arrowdown" /> : header.column.getIsSorted() === "desc" ? <Icon iconType="arrowup" /> : ""}
                                 </th>
                             ))}
                         </tr>

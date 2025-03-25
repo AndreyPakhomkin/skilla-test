@@ -1,5 +1,5 @@
 
-// type ?: 'In' | 'Out' | 'Missed' | 'Aborted'
+// type ?: 'In' | 'Out' | 'missed' | 'Aborted'
 
 export const getTableData = () => {
 

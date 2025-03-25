@@ -44,17 +44,17 @@ export interface ICall {
     person_name: string;
     person_surname: string;
     person_avatar: string;
-    type: 'Incoming' | 'Outgoing' | 'Missed' | 'NoAnswer';
+    type: 'incoming' | 'outgoing' | 'missed' | 'noanswer';
     rate: string;
     phoneNumber: string,
     duration: string
 }
 
 export enum CallType {
-    Incoming = 'входящий',
-    Outgoing = 'исходящий',
-    Missed = 'пропущенный',
-    NoAnswer = 'недозвон'
+    incoming = 'входящий',
+    outgoing = 'исходящий',
+    missed = 'пропущенный',
+    noanswer = 'недозвон'
 }
 
 export interface IError {

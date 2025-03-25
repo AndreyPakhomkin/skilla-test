@@ -12,7 +12,7 @@ interface CallTableCellProps {
 
 const CallTableCell: React.FC<CallTableCellProps> = ({ columnId, value, context }) => {
     if (columnId === "type") {
-        return <Icon iconType={value as "incoming" | "outgoing" | "missed" | "noAnswer"} />;
+        return <Icon iconType={value as "incoming" | "outgoing" | "missed" | "noanswer"} />;
     }
 
     if (columnId === "person_avatar") {
