@@ -4,39 +4,49 @@ import {
     useReactTable,
     flexRender,
     getSortedRowModel,
-    SortingState,
-    ColumnFiltersState
+    SortingState
 } from "@tanstack/react-table";
 import { helpedColumns } from "../entities/tableConstants/Columns";
 import './CallsTable.scss'
 import { useAppSelector } from "../shared/hooks/storeHooks";
-import CallTableCell from "../features/CallTableCell";
+import CallTableCell from "../features/CallTableCell/CallTableCell";
 import Icon from "../shared/ui/Icon";
+import CallFilter from "../features/CallFilter/CallFilter";
+import PeriodPick from "../shared/ui/periodPick/PeriodPick";
 
 
 const CallsTable: React.FC = () => {
-    const data = useAppSelector((state) => state.storedCalls.calls);
+    const calls = useAppSelector((state) => state.storedCalls.calls);
     const columns = useMemo(() => helpedColumns, []);
     const [sorting, setSorting] = useState<SortingState>([]);
-    const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+    const [filter, setFilter] = useState<"all" | "incoming" | "outgoing">("all");
+    const filteredData = useMemo(() => {
+        return calls.filter(call => {
+            if (filter === "incoming") return call.in_out === 1;
+            if (filter === "outgoing") return call.in_out === 0;
+            return true;
+        });
+    }, [calls, filter]);
+
     const table = useReactTable({
         columns,
-        data,
+        data: filteredData,
         getCoreRowModel: getCoreRowModel(),
         getSortedRowModel: getSortedRowModel(),
-        state: {
-            sorting,
-            columnFilters
-        },
+        state: { sorting },
         onSortingChange: setSorting,
-        onColumnFiltersChange: setColumnFilters,
     });
 
     useEffect(() => console.log('CallsTable render'))
-    useEffect(() => console.log('Calls', data), [data])
+    useEffect(() => console.log('Calls', calls), [calls])
+    useEffect(() => console.log("Filtered Calls", filteredData), [filteredData]);
 
     return (
         <div className="table-container">
+            <div className="toolbar">
+                <CallFilter filter={filter} setFilter={setFilter} />
+                <PeriodPick />
+            </div>
             <table>
                 <thead>
                     {table.getHeaderGroups().map(headerGroup => (

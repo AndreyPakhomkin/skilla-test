@@ -1,7 +1,9 @@
 .table-container {
     margin-top: 40px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 
     table {
         width: 100%;
@@ -90,5 +92,10 @@
         }
     }
 
-
+    .toolbar {
+        height: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 }
