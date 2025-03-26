@@ -70,7 +70,8 @@ export interface CallsState {
 }
 
 export interface IGetCallsParams {
-    today: string
+    today: string,
+    periodStart: string
 }
 
 export interface ICallsResponse {

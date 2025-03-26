@@ -9,8 +9,8 @@ export const callsApi = createApi({
     keepUnusedDataFor: 0,
     endpoints: (builder) => ({
         getCalls: builder.mutation<TransformedCallsResponse, IGetCallsParams>({
-            query: ({ today }) => ({
-                url: `getList?date_start=2024-01-01&date_end=${today}`,
+            query: ({ today, periodStart }) => ({
+                url: `getList?date_start=${periodStart}&date_end=${today}`,
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

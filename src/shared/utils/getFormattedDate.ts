@@ -1,4 +1,5 @@
-export const getFormattedToday = () => {
-    const formattedToday = new Date().toISOString().slice(0, 10);
-    return formattedToday
+export const getFormattedDate = (daysToSubtract = 0): string => {
+    const date = new Date();
+    date.setDate(date.getDate() - Number(daysToSubtract));
+    return date.toISOString().slice(0, 10);
 }

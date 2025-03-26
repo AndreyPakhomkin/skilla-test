@@ -1,0 +1,16 @@
+.period-container {
+    width: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .period-switch {
+        display: flex;
+        justify-content: space-between;
+        white-space: nowrap;
+    }
+
+    .period-loader {
+        height: 25px
+    }
+}

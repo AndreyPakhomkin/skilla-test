@@ -1,5 +1,5 @@
 import React from "react";
-import Icon from "../../shared/ui/Icon";
+import IconItem from "../../shared/ui/IconItem/IconItem";
 import { flexRender } from "@tanstack/react-table";
 import Rate from "../../shared/ui/rate/Rate";
 import './CallTableCell.scss'
@@ -12,11 +12,11 @@ interface CallTableCellProps {
 
 const CallTableCell: React.FC<CallTableCellProps> = ({ columnId, value, context }) => {
     if (columnId === "type") {
-        return <Icon iconType={value as "incoming" | "outgoing" | "missed" | "noanswer"} />;
+        return <IconItem iconType={value as "incoming" | "outgoing" | "missed" | "noanswer"} />;
     }
 
     if (columnId === "person_avatar") {
-        return <Icon iconType="user" />;
+        return <IconItem iconType="user" />;
     }
 
     if (columnId === "rate") {

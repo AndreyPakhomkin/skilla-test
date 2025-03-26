@@ -10,9 +10,9 @@ import { helpedColumns } from "../entities/tableConstants/Columns";
 import './CallsTable.scss'
 import { useAppSelector } from "../shared/hooks/storeHooks";
 import CallTableCell from "../features/CallTableCell/CallTableCell";
-import Icon from "../shared/ui/Icon";
+import IconItem from "../shared/ui/IconItem/IconItem";
 import CallFilter from "../features/CallFilter/CallFilter";
-import PeriodPick from "../shared/ui/periodPick/PeriodPick";
+import PeriodSwitch from "../shared/ui/PeriodSwitch/PeriodSwitch";
 
 
 const CallsTable: React.FC = () => {
@@ -45,7 +45,7 @@ const CallsTable: React.FC = () => {
         <div className="table-container">
             <div className="toolbar">
                 <CallFilter filter={filter} setFilter={setFilter} />
-                <PeriodPick />
+                <PeriodSwitch />
             </div>
             <table>
                 <thead>
@@ -59,7 +59,7 @@ const CallsTable: React.FC = () => {
                                             header.column.columnDef.header,
                                             header.getContext()
                                         )}
-                                    {header.column.getIsSorted() === "asc" ? <Icon iconType="arrowdown" /> : header.column.getIsSorted() === "desc" ? <Icon iconType="arrowup" /> : ""}
+                                    {header.column.getIsSorted() === "asc" ? <IconItem iconType="arrowdown" /> : header.column.getIsSorted() === "desc" ? <IconItem iconType="arrowup" /> : ""}
                                 </th>
                             ))}
                         </tr>
