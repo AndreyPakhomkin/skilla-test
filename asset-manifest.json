@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/skilla-test/static/css/main.0a721953.css",
+    "main.js": "/skilla-test/static/js/main.8eac036c.js",
+    "static/media/user-icon.svg": "/skilla-test/static/media/user-icon.ac8e763bf7b8684b545d33e59e18bdd5.svg",
+    "index.html": "/skilla-test/index.html",
+    "static/media/arrowup-icon.svg": "/skilla-test/static/media/arrowup-icon.f8d6f6016eea14ab3c0ae4801f32ce71.svg",
+    "static/media/noanswer-icon.svg": "/skilla-test/static/media/noanswer-icon.ccb0392dd637282ecc9ef32318954b73.svg",
+    "static/media/outgoing-icon.svg": "/skilla-test/static/media/outgoing-icon.9b93d017fba57b7053c1b8ccb7f77a75.svg",
+    "static/media/incoming-icon.svg": "/skilla-test/static/media/incoming-icon.9d033a8a284d56ae933af7d166198cae.svg",
+    "static/media/missed-icon.svg": "/skilla-test/static/media/missed-icon.56303f7625e0365fd7fe6d012804dc20.svg",
+    "main.0a721953.css.map": "/skilla-test/static/css/main.0a721953.css.map",
+    "main.8eac036c.js.map": "/skilla-test/static/js/main.8eac036c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0a721953.css",
+    "static/js/main.8eac036c.js"
+  ]
+}
